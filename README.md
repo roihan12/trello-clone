@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to simple Trello clone repository 👋</h1>
 
-![Trello clone preview]()
+![Trello clone preview](https://github.com/roihan12/trello-clone/blob/main/public/Screenshot%202024-01-07%20175705.png)
 
 <h5 align="center"> Task management website created with <a href="https://nextjs.com/" target="_blank">NextJS</a>.
 </h5>
@@ -9,7 +9,7 @@
   <a href="https://trello-clone-mp9n22rgq-roihan12.vercel.app" _blank>Try it now!</a>
 </h6>
 
-## 💵 About
+## About
 A web-based application created to manage task,  Trello clone was created so that users can manage task anywhere and anytime.
 
 ## ✨ Features
