@@ -1,4 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Welcome to simple Trello clone repository 👋</h1>
+
+![Trello clone preview]()
+
+<h5 align="center"> Task management website created with <a href="https://nextjs.com/" target="_blank">NextJS</a>.
+</h5>
+
+<h6 align="center">
+  <a href="https://trello-clone-mp9n22rgq-roihan12.vercel.app" _blank>Try it now!</a>
+</h6>
+
+## 💵 About
+A web-based application created to manage task,  Trello clone was created so that users can manage task anywhere and anytime.
+
+## ✨ Features
+- 💳 Authentication
+  - Login
+  - Register
+  - Logout
+- 📝 CRUD
+  - Task
+  -Support upload images
+- 😎 Dark Mode
+- 👮 Security
+  - NextAuth
+- 🤙 Responsive UI
+- 🏫 Support ChatGpt for summarizes
+
+
+## 🚀 Tech Stack
+  - [NextJS](https://nextjs.org/)
+  - [ReactJS](https://reactjs.org/)
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [React Query](https://react-query.tanstack.com/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [Appwrite.io](https://appwrite.io)
+
+  
+
+
+## ⚖️ License
+Distributed under the MIT License. See `LICENSE` for more information.
+
 
 ## Getting Started
 
@@ -15,11 +57,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
