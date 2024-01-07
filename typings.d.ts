@@ -21,3 +21,10 @@ interface Image {
   bucketId: string;
   fileId: string;
 }
+
+interface User extends Model.Document {
+  $id: string;
+  $createdAt: string;
+  email: string;
+  name: string;
+}

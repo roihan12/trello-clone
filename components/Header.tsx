@@ -5,6 +5,7 @@ import Avatar from "react-avatar";
 import { useBoardStore } from "@/store/BoardStore";
 import { useEffect, useState } from "react";
 import fetchSuggestion from "@/lib/fetchSuggestion";
+import { useSession, signOut } from "next-auth/react";
 
 const Header = () => {
   const [board, searchString, setSearchString] = useBoardStore((state) => [
@@ -13,19 +14,19 @@ const Header = () => {
     state.setSearchString,
   ]);
 
+  const { data: session } = useSession();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [suggestion, setSuggestion] = useState<string>("");
   useEffect(() => {
-    if (board.columns.size === 0) return;
-    setLoading(true);
-
-    const fetchSuggestionFunc = async () => {
-      const suggestion = await fetchSuggestion(board);
-      setSuggestion(suggestion);
-      setLoading(false);
-    };
-
-    fetchSuggestionFunc()
+    // if (board.columns.size === 0) return;
+    // setLoading(true);
+    // const fetchSuggestionFunc = async () => {
+    //   const suggestion = await fetchSuggestion(board);
+    //   setSuggestion(suggestion);
+    //   setLoading(false);
+    // };
+    // fetchSuggestionFunc()
   }, [board]);
 
   return (
@@ -56,7 +57,14 @@ const Header = () => {
           </form>
 
           {/* Avatar */}
-          <Avatar name="Roihan Sori" round size="50" color="#0055D1" />
+          <Avatar
+            name={session?.user?.name!}
+            round
+            size="50"
+            color="#0055D1"
+            onClick={() => signOut()}
+            className="cursor-pointer"
+          />
         </div>
       </div>
 

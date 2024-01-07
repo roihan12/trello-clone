@@ -3,8 +3,11 @@ import { useBoardStore } from "@/store/BoardStore";
 import { useEffect, useState } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import Column from "./Column";
+import { useAuthStore } from "@/store/AuthStore";
+import { useSession } from "next-auth/react";
 
 const Board = () => {
+  const { data: session } = useSession();
   const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore(
     (state) => [
       state.board,
@@ -14,12 +17,51 @@ const Board = () => {
     ]
   );
 
-  //   const board = useBoardStore((state) => state.board);
-  useEffect(() => {
-    getBoard();
-  }, [getBoard]);
+  const [user, registerUser, checkUser] = useAuthStore((state) => [
+    state.user,
+    state.registerUser,
+    state.checkUser,
+  ]);
 
-  // console.log(board);
+  // console.log(session?.user?.email);
+  const [isCheckUserCompleted, setIsCheckUserCompleted] = useState(false);
+  const [isRegisterUserCompleted, setIsRegisterUserCompleted] = useState(false);
+
+  const email = session?.user?.email;
+  const name = session?.user?.name;
+  console.log("user:", user);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (email && !isCheckUserCompleted) {
+        await checkUser(email);
+        setIsCheckUserCompleted(true);
+      }
+
+      if (!user && email && name && !isRegisterUserCompleted) {
+        await registerUser(name, email);
+        setIsRegisterUserCompleted(true);
+      }
+    };
+    getBoard(user.email);
+
+    fetchData();
+  }, [
+    user,
+    getBoard,
+    checkUser,
+    registerUser,
+    email,
+    name,
+    isCheckUserCompleted,
+    isRegisterUserCompleted,
+  ]);
+
+  // Reset completion flags when session changes (user logs out, logs in with a different account, etc.)
+  useEffect(() => {
+    setIsCheckUserCompleted(false);
+    setIsRegisterUserCompleted(false);
+  }, [session]);
+  console.log(board);
 
   const handleOnDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
@@ -92,8 +134,6 @@ const Board = () => {
         id: finishCol.id,
         todos: finishTodos,
       });
-
-
 
       // Update in db
       updateTodoInDB(todoMoved, finishCol.id);
