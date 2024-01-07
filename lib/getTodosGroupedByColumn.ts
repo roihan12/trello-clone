@@ -24,7 +24,7 @@ export const getTodosGroupedByColumn = async (email: string) => {
     console.log("todos", todos);
 
     const columns = todos?.reduce(
-      (acc: Map<TypedColumn, Column>, todo: Todo) => {
+      (acc: Map<TypedColumn, Column>, todo: any) => {
         if (!acc.get(todo.status)) {
           acc.set(todo.status, {
             id: todo.status,
