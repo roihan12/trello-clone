@@ -5,7 +5,7 @@ import Modal from "@/components/Modal";
 import Login from "@/components/Login";
 import SessionProvider from "@/components/SessionProvider";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
