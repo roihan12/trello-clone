@@ -37,7 +37,7 @@ export const getTodosGroupedByColumn = async (email: string) => {
           title: todo.title,
           status: todo.status,
           //   Get the image if it exists on the todo
-          ...(todo.image && { image: JSON.parse(todo.image)}),
+          ...(todo.image && { image: JSON.parse(todo.image!)}),
         });
 
         return acc;
